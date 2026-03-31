@@ -227,31 +227,21 @@
 
     .hero-title .accent { color: var(--brand); }
 
-    /* ── Typing cursor */
-    .type-cursor {
-      display: inline-block;
-      color: var(--brand);
-      font-weight: 100;
-      letter-spacing: 0;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
-
+    /* ── Typing animation */
     #type-line1,
     .hero-title .recruiting {
       display: block;
-      text-align: left;
       white-space: nowrap;
-      /* min-width is set in JS after measuring rendered full-text width */
     }
 
-    .hero-title .recruiting {
-      color: var(--brand);
+    .hero-title .recruiting { color: var(--brand); }
+
+    .type-char {
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.06s ease;
     }
+
 
     .hero-sub {
       font-size: 1.15rem;
@@ -367,9 +357,9 @@
       box-shadow: 0 0 8px #22c55e;
     }
 
-    .float-tag-1 { top: 10%; right: 4%; animation-delay: 0s; }
-    .float-tag-2 { top: 46%; left: -4%; animation: float-mid 4s ease-in-out infinite; animation-delay: 1.2s; }
-    .float-tag-3 { bottom: 12%; right: 8%; animation-delay: 2.4s; }
+    .float-tag-1 { top: 10%; right: 4%; animation-delay: -0.5s; }
+    .float-tag-2 { top: 46%; left: -4%; animation: float-mid 4s ease-in-out infinite; animation-delay: -2s; }
+    .float-tag-3 { bottom: 12%; right: 8%; animation-delay: -3s; }
 
     @keyframes float-mid {
       0%, 100% { transform: translateY(-50%); }
@@ -525,7 +515,7 @@
       font-size: clamp(1.6rem, 3.4vw, 3.6rem);
       color: #fff;
       letter-spacing: 0.03em;
-      line-height: 1.1;
+      line-height: 1.32;
       margin: 12px 0 0;
     }
 
@@ -543,6 +533,12 @@
     }
 
     .mission-headline .accent { color: var(--brand); }
+
+    .mission-highlight {
+      background: rgba(0, 183, 236, 0.1);
+      border-radius: 6px;
+      padding: 2px 12px 4px;
+    }
 
     .mission-body {
       max-width: 680px;
@@ -1132,19 +1128,10 @@
       display: block;
     }
 
-    .hero-circle-text .watermark-i {
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: 1em;
-      font-weight: 900;
-      position: relative;
-      top: 0;
-      letter-spacing: 0.04em;
-    }
-
     .footer-links {
       display: flex;
-      gap: 28px;
-      list-style: none;
+      align-items: center;
+      gap: 12px;
     }
 
     .footer-links a {
@@ -1154,6 +1141,21 @@
     }
 
     .footer-links a:hover { color: var(--brand); }
+
+    .footer-sep {
+      color: var(--border);
+      font-size: 0.8rem;
+      user-select: none;
+    }
+
+    .hero-circle-text .watermark-i {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1em;
+      font-weight: 900;
+      position: relative;
+      top: 0;
+      letter-spacing: 0.04em;
+    }
 
     .footer-copy {
       font-size: 0.78rem;
@@ -1221,8 +1223,8 @@
         <div class="hero-copy">
           <div class="hero-kicker">PLAiF — Next Stage Recruiting 2026.04.06 — 04.30</div>
           <h1 class="hero-title">
-            <span id="type-line1" style="color:transparent">NEXT STAGE</span>
-            <span class="recruiting" id="type-line2" style="color:transparent">RECRUITING</span>
+            <span id="type-line1"></span>
+            <span class="recruiting" id="type-line2"></span>
           </h1>
           <p class="hero-sub">
             아무도 건드리지 못한 조립·체결 공정,<br />
@@ -1237,19 +1239,19 @@
           </div>
 
           <div class="hero-stats">
-            <div class="stat-card reveal">
+            <div class="stat-card">
               <div class="stat-num">139억</div>
               <div class="stat-label">시리즈A 투자 유치</div>
             </div>
-            <div class="stat-card reveal">
+            <div class="stat-card">
               <div class="stat-num">15+</div>
               <div class="stat-label">오픈 포지션</div>
             </div>
-            <div class="stat-card reveal">
+            <div class="stat-card">
               <div class="stat-num">TI-1</div>
               <div class="stat-label">기술신용평가 최상위 등급</div>
             </div>
-            <div class="stat-card reveal">
+            <div class="stat-card">
               <div class="stat-num">~ 04.30</div>
               <div class="stat-label">Next Stage 지원 마감</div>
             </div>
@@ -1343,7 +1345,7 @@
       <div class="section-label reveal">Our Mission</div>
       <h2 class="mission-headline reveal">
         반복은 로봇이,<br />
-        <span class="accent">위대한 일은 사람이</span><br />
+        <span class="accent mission-highlight">위대한 일은 사람이</span><br />
         하는 세상
       </h2>
       <p class="mission-body reveal">
@@ -1766,12 +1768,13 @@
   <div style="background: var(--bg-2); border-top: 1px solid var(--border);">
     <footer>
       <div class="footer-logo"><img src="PLAIF_text%20(2).png" alt="PLAiF" /></div>
-      <ul class="footer-links">
-        <li><a href="#">회사 소개</a></li>
-        <li><a href="#">블로그</a></li>
-        <li><a href="#">개인정보처리방침</a></li>
-        <li><a href="#">이용약관</a></li>
-      </ul>
+      <div class="footer-links">
+        <a href="https://plaif.ninehire.site/" target="_blank" rel="noopener">회사소개</a>
+        <span class="footer-sep">|</span>
+        <a href="https://www.linkedin.com/company/plaif/" target="_blank" rel="noopener">링크드인</a>
+        <span class="footer-sep">|</span>
+        <a href="https://www.youtube.com/@plaif905" target="_blank" rel="noopener">유튜브</a>
+      </div>
       <div class="footer-copy">
         © 2026 PLAiF Inc. All rights reserved. — 피지컬 AI로 제조 현장의 한계를 넘는 날까지.
       </div>
@@ -1827,42 +1830,37 @@
     (function () {
       const line1 = document.getElementById('type-line1');
       const line2 = document.getElementById('type-line2');
-      const CURSOR = '<span class="type-cursor">|</span>';
 
-      // Lock each span to its rendered full-text width BEFORE animation starts.
-      // This prevents any horizontal movement as characters are revealed.
-      function lockWidth(el) {
-        el.style.minWidth = el.getBoundingClientRect().width + 'px';
+      // Build all char spans + cursor upfront so layout is 100% fixed from paint
+      function buildLine(el, text, charColor) {
+        el.innerHTML =
+          text.split('').map(ch =>
+            `<span class="type-char" style="color:${charColor}">${ch === ' ' ? '\u00a0' : ch}</span>`
+          ).join('') +
+          '';
       }
 
-      function typeText(el, visibleColor, speed, done, keepCursor = false) {
-        const fullText = el.textContent;
+      buildLine(line1, 'NEXT STAGE', '#ffffff');
+      buildLine(line2, 'RECRUITING', '#00b7ec');
 
+      function revealChars(el, speed, done) {
+        const chars = el.querySelectorAll('.type-char');
         let i = 0;
         (function tick() {
-          const shown    = fullText.slice(0, i);
-          const hidden   = fullText.slice(i);
-          const isTyping = i < fullText.length;
-          el.innerHTML =
-            (shown  ? `<span style="color:${visibleColor}">${shown}</span>` : '') +
-            (isTyping || keepCursor ? CURSOR : '') +
-            (hidden ? `<span style="color:transparent">${hidden}</span>` : '');
-
-          if (isTyping) {
+          if (i < chars.length) {
+            chars[i].style.opacity = '1';
             i++;
             setTimeout(tick, speed);
-          } else if (done) {
-            setTimeout(done, 300);
+          } else {
+            if (done) setTimeout(done, 300);
           }
         })();
       }
 
       setTimeout(() => {
-        lockWidth(line1);
-        lockWidth(line2);
-        typeText(line1, '#ffffff', 72, () => {
-          typeText(line2, '#00b7ec', 72, null, true);
-        }, false);
+        revealChars(line1, 72, () => {
+          revealChars(line2, 72, null);
+        });
       }, 400);
     })();
   </script>
