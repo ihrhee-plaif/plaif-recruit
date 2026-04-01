@@ -876,14 +876,13 @@
 
     .position-row:hover .pos-arrow { transform: translateX(4px); }
 
-    /* ─── 07 합류 여정 ─────────────────────────────────────────── */
+    /* ─── 07 채용 일정 ─────────────────────────────────────────── */
     #journey {
       padding: 140px 0;
     }
 
     .journey-header {
-      text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 56px;
     }
 
     .journey-header h2 {
@@ -891,14 +890,49 @@
       color: #fff;
     }
 
-    .journey-steps {
+    .schedule-table {
+      border-top: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .schedule-row {
+      display: flex;
+      align-items: flex-start;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 60px;
+    }
+
+    .schedule-label {
+      flex: 0 0 120px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brand);
+      letter-spacing: 0.02em;
+      padding-top: 2px;
+    }
+
+    .schedule-value {
+      flex: 1;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .schedule-value strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .process-steps {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       position: relative;
       gap: 0;
+      margin: 48px 0 56px;
     }
 
-    .journey-steps::before {
+    .process-steps::before {
       content: '';
       position: absolute;
       top: 32px;
@@ -909,7 +943,7 @@
       opacity: 0.3;
     }
 
-    .journey-step {
+    .process-step {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -917,7 +951,7 @@
       padding: 0 12px;
     }
 
-    .step-circle {
+    .process-step .step-circle {
       width: 64px;
       height: 64px;
       border-radius: 50%;
@@ -935,27 +969,137 @@
       transition: all 0.3s;
     }
 
-    .journey-step:hover .step-circle {
+    .process-step:hover .step-circle {
       background: var(--brand);
       color: #000;
       border-color: var(--brand);
       box-shadow: 0 0 24px var(--brand-glow);
     }
 
-    .step-title {
+    .process-step .step-title {
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #fff;
-      margin-bottom: 8px;
+      line-height: 1.4;
     }
 
-    .step-desc {
-      font-size: 0.78rem;
+    .schedule-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 8px;
+    }
+
+    .schedule-note {
+      font-size: 0.82rem;
       color: var(--text-muted);
       line-height: 1.7;
+      padding-left: 16px;
+      position: relative;
     }
 
-    /* ─── 08 FAQ ───────────────────────────────────────────────── */
+    .schedule-note::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--brand);
+    }
+
+    /* ─── 08 CAMPAIGN BENEFIT ──────────────────────────────────── */
+    #campaign-benefit {
+      padding: 120px 0;
+      background: var(--bg-2);
+    }
+
+    .benefit-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .benefit-header h2 {
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .benefit-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .benefit-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--bg-3, #111);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--brand);
+      box-shadow: 0 0 32px rgba(0, 200, 255, 0.08);
+    }
+
+    .benefit-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(0, 200, 255, 0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+    }
+
+    .benefit-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .benefit-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--brand);
+      background: rgba(0, 200, 255, 0.1);
+      border-radius: 4px;
+      padding: 3px 8px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+    }
+
+    .benefit-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 640px) {
+      .benefit-cards { grid-template-columns: 1fr; }
+    }
+
+    /* ─── 09 FAQ ───────────────────────────────────────────────── */
     #faq {
       padding: 120px 0;
       background: var(--bg-2);
@@ -968,7 +1112,7 @@
     }
 
     .faq-left h2 {
-      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-size: clamp(2.2rem, 3vw, 3.2rem);
       color: #fff;
     }
 
@@ -1476,8 +1620,8 @@
     <div class="container">
       <div class="positions-header reveal">
         <div>
-          <div class="section-label">Open Positions</div>
-          <h2>함께할 분을 찾습니다</h2>
+          <div class="section-label">WE ARE HIRING</div>
+          <h2>채용 중인 포지션</h2>
         </div>
         <div class="filter-tabs">
           <button class="filter-tab active">전체</button>
@@ -1632,105 +1776,142 @@
     </div>
   </section>
 
-  <!-- ── 07 합류 여정 ───────────────────────────────────────────── -->
+  <!-- ── 07 채용 일정 ───────────────────────────────────────────── -->
   <section id="journey">
     <div class="container">
       <div class="journey-header reveal">
-        <div class="section-label">합류 여정</div>
-        <h2>지원부터 합류까지</h2>
+        <div class="section-label">WE ARE HIRING</div>
+        <h2>합류 여정</h2>
       </div>
-      <div class="journey-steps">
-        <div class="journey-step reveal">
+      <div class="schedule-table reveal">
+        <div class="schedule-row">
+          <div class="schedule-label">접수 기간</div>
+          <div class="schedule-value"><strong>4.6 (월) — 4.30 (목)</strong></div>
+        </div>
+      </div>
+      <div class="process-steps reveal">
+        <div class="process-step">
           <div class="step-circle">01</div>
-          <div class="step-title">서류 지원</div>
-          <div class="step-desc">이력서 & 포트폴리오 제출.<br />48시간 내 검토 결과 안내.</div>
+          <div class="step-title">지원서 접수</div>
         </div>
-        <div class="journey-step reveal">
+        <div class="process-step">
           <div class="step-circle">02</div>
-          <div class="step-title">서류 심사</div>
-          <div class="step-desc">AI 보조 + 사람이 직접 검토하는 공정한 서류 심사.</div>
+          <div class="step-title">서류 전형</div>
         </div>
-        <div class="journey-step reveal">
+        <div class="process-step">
           <div class="step-circle">03</div>
-          <div class="step-title">컬처핏 인터뷰</div>
-          <div class="step-desc">30분, 편안한 대화로 서로를 알아가는 시간.</div>
+          <div class="step-title">인터뷰 전형</div>
         </div>
-        <div class="journey-step reveal">
+        <div class="process-step">
           <div class="step-circle">04</div>
-          <div class="step-title">기술 인터뷰</div>
-          <div class="step-desc">실무 중심 과제 & 라이브 코딩 또는 케이스 스터디.</div>
+          <div class="step-title">처우 협의</div>
         </div>
-        <div class="journey-step reveal">
+        <div class="process-step">
           <div class="step-circle">05</div>
-          <div class="step-title">최종 합류</div>
-          <div class="step-desc">오퍼 수락 후 온보딩 시작. Welcome to PLAiF!</div>
+          <div class="step-title">최종합격 및 입사</div>
+        </div>
+      </div>
+      <div class="schedule-notes reveal">
+        <div class="schedule-note">전형 절차는 일정 및 상황에 따라 일부 변경될 수 있습니다.</div>
+        <div class="schedule-note">최종 단계 합격자에 한해 레퍼런스 체크가 진행될 수 있으며, 레퍼리는 사전 협의를 통해 함께 결정합니다.</div>
+        <div class="schedule-note">인터뷰는 기본적으로 대면으로 진행되며, Next Chapter Recruiting 기간 내 지원자에 한해 희망 시 화상으로도 조율 가능합니다.</div>
+        <div class="schedule-note">제출해 주신 내용에 허위 사실이 확인될 경우, 채용이 취소될 수 있습니다.</div>
+        <div class="schedule-note">각 전형 단계에 대해 더 자세히 알고 싶다면, 아래 합류 여정 페이지를 확인해 주세요.</div>
+      </div>
+      <div class="reveal" style="margin-top: 32px;">
+        <a href="https://plaif.ninehire.site/journey" target="_blank" class="btn btn-ghost">합류 여정 자세히 보기 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 08 CAMPAIGN BENEFIT ────────────────────────────────────── -->
+  <section id="campaign-benefit">
+    <div class="container">
+      <div class="benefit-header reveal">
+        <div class="section-label">BENEFIT</div>
+        <h2>지원 과정도 더 유연하게</h2>
+        <p>Next Chapter Recruiting 기간에만 제공되는 특별한 혜택입니다.</p>
+      </div>
+      <div class="benefit-cards">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14"/>
+              <rect x="3" y="6" width="12" height="12" rx="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="benefit-tag">Interview</div>
+            <h3>화상 인터뷰 선택 가능</h3>
+          </div>
+          <p>대면 인터뷰 참여가 어려운 지원자 분들의 부담을 줄이기 위해,<br />이번 기간 내 지원자에 한해 희망 시 화상 인터뷰로 조율해 드려요.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── 08 FAQ ─────────────────────────────────────────────────── -->
+  <!-- ── 09 FAQ ─────────────────────────────────────────────────── -->
   <section id="faq">
     <div class="container">
       <div class="faq-layout">
         <div class="faq-left reveal">
           <div class="section-label">FAQ</div>
           <h2>자주 묻는 질문</h2>
-          <p>여기에 없는 질문은 <a href="mailto:recruit@plaif.io">recruit@plaif.io</a>로 언제든 물어보세요.</p>
         </div>
         <div class="faq-list reveal">
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">
-              로보틱스 비전공자도 지원 가능한가요?
+              이미 제출한 지원서를 수정할 수 있나요?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
               <div class="faq-a-inner">
-                포지션에 따라 다릅니다. AI/ML, 소프트웨어 인프라 직군은 로보틱스 비전공자도 지원 가능합니다. 다만 로봇 제어·메카트로닉스 포지션은 관련 경험이 필수입니다. 공고의 자격 요건을 꼼꼼히 확인해 주세요.
+                한번 제출된 지원서는 시스템 상 수정이 어려워요. 수정이 필요하신 경우, 번거로우시겠지만 새로 제출해 주시면 함께 확인해서 검토할게요.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">
-              실제 공장 현장 출장이 있나요?
+              불합격한 이력이 있어도 재지원이 가능한가요?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
               <div class="faq-a-inner">
-                Robot Application Engineer 등 일부 포지션은 국내 고객사 현장 출장이 포함됩니다. R&D 중심 포지션은 주로 서울 오피스 및 사내 실험실에서 근무하며, 배포 단계에서 간헐적인 현장 방문이 있을 수 있습니다.
+                플라잎 NEXT CHAPTER RECRUITING은 재지원 제한이 없어요. 최근 6개월 이내에 불합격 이력이 있어도 지원이 가능해요. 단, 이전 지원 이후 명확한 성장 경험이나 이력 업데이트를 권장드려요.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">
-              이번 채용 전형 일정은 어떻게 되나요?
+              중복 지원이 가능한가요?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
               <div class="faq-a-inner">
-                서류 접수: 2026.04.06 ~ 04.30 / 서류 결과 안내: 접수 후 5 영업일 이내 / 1차 인터뷰 (컬처핏): 5월 초 / 2차 인터뷰 (기술): 5월 중 / 최종 합격 통보: 5월 말 예정. 일정은 지원자 상황에 따라 조율 가능합니다.
+                네, 가능합니다. 지원하신 포지션 마다 독립적으로 전형과 결과를 안내 드릴 예정이에요.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">
-              스톡옵션은 어떻게 부여되나요?
+              병역특례 대상자는 어떻게 지원하면 되나요?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
               <div class="faq-a-inner">
-                전 포지션 스톡옵션 부여를 원칙으로 합니다. 직급과 포지션에 따라 규모가 달라지며, 베스팅 기간은 4년 (1년 클리프)입니다. 시리즈A 완료 직후 합류하는 만큼, 초기 멤버로서 의미 있는 지분을 받을 수 있는 시점입니다.
+                지원 페이지에서 '전문연구요원 희망'을 꼭 선택해서 지원해 주세요.
               </div>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q" onclick="toggleFaq(this)">
-              연구 논문 발표나 오픈소스 기여가 가능한가요?
+              기타 문의사항이 있어요.
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-a">
               <div class="faq-a-inner">
-                적극 권장합니다. 학회 참가비·등록비를 회사에서 지원하며, 논문 게재 시 별도 인센티브가 있습니다. 다만 특허·영업비밀과 관련된 핵심 기술은 사전 검토가 필요합니다. 연구와 제품 개발을 병행하는 문화를 지향합니다.
+                더 궁금한 점은 플라잎 채용 페이지의 <a href="https://plaif.ninehire.site/faq" target="_blank" style="color:var(--brand); text-decoration:underline;">자주 묻는 질문</a>에서 확인해 주세요.<br /><br />
+                원하시는 내용이 없을 경우, 플라잎 채용팀(<a href="mailto:recruit@plaif.com" style="color:var(--brand);">recruit@plaif.com</a>)으로 문의 주세요.
               </div>
             </div>
           </div>
