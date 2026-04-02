@@ -193,7 +193,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 0 80px;
+      padding: 100px 0 60px;
       overflow: hidden;
       background:
         radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,183,236,0.08) 0%, transparent 70%),
@@ -247,7 +247,7 @@
       font-size: 1.15rem;
       color: var(--text-muted);
       max-width: 480px;
-      margin: 24px 0 40px;
+      margin: 16px 0 28px;
       line-height: 1.8;
     }
 
@@ -267,14 +267,14 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      margin-top: 60px;
+      margin-top: 36px;
     }
 
     .stat-card {
       background: var(--bg-2);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px 24px;
+      padding: 20px 20px;
       position: relative;
       overflow: hidden;
       transition: border-color 0.25s, background 0.25s;
@@ -312,8 +312,10 @@
     .hero-visual {
       position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 32px;
     }
 
     .hero-gfx {
@@ -321,19 +323,34 @@
       max-width: 480px;
       aspect-ratio: 1;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,183,236,0.18) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,183,236,0.12) 0%, transparent 70%);
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .hero-circle-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 10vw, 10rem);
-      color: rgba(0,183,236,0.12);
-      letter-spacing: 0.04em;
-      text-align: center;
+    .hero-logo-bg {
+      width: 80%;
+      max-width: 360px;
+      opacity: 0.08;
+      filter: brightness(8);
+      pointer-events: none;
       user-select: none;
+    }
+
+    .hero-actions-right {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .hero-actions-right .btn {
+      flex: 1;
+      justify-content: center;
+      padding: 15px 20px;
+      font-size: 0.9rem;
     }
 
     .float-tag {
@@ -357,9 +374,9 @@
       box-shadow: 0 0 8px #22c55e;
     }
 
-    .float-tag-1 { top: 10%; right: 4%; animation-delay: -0.5s; }
-    .float-tag-2 { top: 46%; left: -4%; animation: float-mid 4s ease-in-out infinite; animation-delay: -2s; }
-    .float-tag-3 { bottom: 12%; right: 8%; animation-delay: -3s; }
+    .float-tag-1 { top: 8%; right: 4%; animation-delay: -0.5s; }
+    .float-tag-2 { top: 42%; left: -4%; animation: float-mid 4s ease-in-out infinite; animation-delay: -2s; }
+    .float-tag-3 { top: 65%; right: 4%; animation-delay: -3s; }
 
     @keyframes float-mid {
       0%, 100% { transform: translateY(-50%); }
@@ -374,7 +391,7 @@
     /* scroll indicator */
     .scroll-indicator {
       position: absolute;
-      bottom: 40px;
+      bottom: 16px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -401,7 +418,7 @@
 
     /* ─── 02 WHY NOW ───────────────────────────────────────────── */
     #why-now {
-      padding: 120px 0;
+      padding: 160px 0 120px;
       background: var(--bg-2);
     }
 
@@ -1377,19 +1394,14 @@
             <strong style="color:#fff; font-weight:700;">Next Stage는 확장입니다.</strong><br />
             함께 할 <strong style="color:#fff; font-weight:700;">Next Mover</strong>를 찾습니다.
           </p>
-          <div class="hero-actions">
-            <a href="#open-positions" class="btn btn-primary">포지션 보러가기 →</a>
-            <a href="#mission" class="btn btn-ghost">우리의 미션</a>
-          </div>
-
           <div class="hero-stats">
             <div class="stat-card">
-              <div class="stat-num">139억</div>
+              <div class="stat-num">139<span style="font-size:0.92em; vertical-align:baseline;">억</span></div>
               <div class="stat-label">시리즈A 투자 유치</div>
             </div>
             <div class="stat-card">
               <div class="stat-num">15+</div>
-              <div class="stat-label">오픈 포지션</div>
+              <div class="stat-label">채용 중 포지션</div>
             </div>
             <div class="stat-card">
               <div class="stat-num">TI-1</div>
@@ -1404,7 +1416,11 @@
 
         <div class="hero-visual">
           <div class="hero-gfx">
-            <div class="hero-circle-text">PLA<span class="watermark-i">i</span>F</div>
+            <img src="PLAIF_text%20(2).png" alt="" class="hero-logo-bg" />
+          </div>
+          <div class="hero-actions-right">
+            <a href="#open-positions" class="btn btn-primary">포지션 보러가기 ↗</a>
+            <a href="#mission" class="btn btn-ghost">우리의 미션</a>
           </div>
           <div class="float-tag float-tag-1">
             <span>🦾</span>
@@ -1435,7 +1451,7 @@
         <div class="reveal">
           <div class="section-label">Why Now</div>
           <h2 class="why-title reveal">
-            <span class="line-fade" style="--d:0s">이제 <span class="accent">PLAiF</span>는</span><br />
+            <span class="line-fade" style="--d:0s">이제 <span class="accent">플라잎</span>은</span><br />
             <span class="line-fade" style="--d:0.18s"><span class="accent">Next Stage</span>로</span><br />
             <span class="line-fade" style="--d:0.36s">도약합니다.</span>
           </h2>
@@ -1444,8 +1460,8 @@
             조립과 체결. 제조 현장에서 자동화가 멈추는 지점.<br />
             우리는 그 문제를 골랐고, 지금 현장에서 증명하고 있습니다.<br />
             <br />
-            Next Stage는 확장입니다.<br />
-            다음 미션을 함께 풀어낼 동료를 찾습니다.
+            Series A 투자 유치 완료, 플라잎은 이제 본격적인 스케일업을 시작합니다.<br />
+            그 다음 챕터를 함께 써 내려갈 분을 찾습니다.
           </p>
         </div>
         <div class="why-cards">
@@ -1459,7 +1475,7 @@
           <div class="why-card reveal">
             <div class="why-icon">⚙️</div>
             <div>
-              <h3>PLAiF가 그 본질을 파고들었습니다</h3>
+              <h3>플라잎은 그 본질을 파고들었습니다</h3>
               <p>3D Vision AI · 강화학습 · 로봇 제어를 하나로 통합해, 사람의 손이 필요했던 그 자리를 채웁니다. 지금 우리 로봇은 국내 대기업 공장 안에서 실제로 움직이고 있습니다.</p>
             </div>
           </div>
@@ -1497,7 +1513,7 @@
         그 꿈의 첫 단추를 제조 현장에서 찾았습니다.<br /><br />
         로봇이 반복을 대신하는 날,<br />
         사람은 비로소 진짜 하고 싶은 일로 하루를 채울 수 있습니다.<br /><br />
-        <strong>PLAiF는 그 세상이 올 때까지 멈추지 않습니다.</strong>
+        <strong>플라잎은 그 세상이 올 때까지 멈추지 않습니다.</strong>
       </p>
       <div class="mission-vision-grid reveal">
         <div class="mission-vision-card">
@@ -1560,54 +1576,6 @@
             <div>
               <div class="story-name">이태양</div>
               <div class="story-role">Mechatronics Engineer</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── 05 YOUR CHALLENGE ──────────────────────────────────────── -->
-  <section id="your-challenge">
-    <div class="container">
-      <div class="challenge-layout">
-        <div class="challenge-left reveal">
-          <div class="section-label">Your Challenge</div>
-          <h2>당신이 <span class="accent">풀게 될</span> 문제들</h2>
-          <div class="divider"></div>
-          <p>
-            세상 어디서도 해결되지 않았던 문제들입니다.
-            로봇공학, 피지컬 AI, 제조 현장이 교차하는 지점에서
-            당신의 기술이 실제로 쓰입니다.
-          </p>
-        </div>
-        <div class="challenge-list">
-          <div class="challenge-item reveal">
-            <div class="challenge-num">01</div>
-            <div class="challenge-text">
-              <h4>ROBOTICS CONTROL</h4>
-              <p>공정마다 다른 물리 변수를 어떻게 하나의 모델로 커버하는가.<br />나사 종류, 토크, 접촉 각도 — 현장마다 다르다. 일반화 가능한 제어 모델 설계가 핵심 과제.</p>
-            </div>
-          </div>
-          <div class="challenge-item reveal">
-            <div class="challenge-num">02</div>
-            <div class="challenge-text">
-              <h4>AI / ML</h4>
-              <p>적은 데이터로 빠르게 학습하는 조립 특화 파운데이션 모델.<br />실제 제조 데이터는 레이블링도 어렵다. Few-shot 환경에서의 로봇 제어 학습 전략을 설계한다.</p>
-            </div>
-          </div>
-          <div class="challenge-item reveal">
-            <div class="challenge-num">03</div>
-            <div class="challenge-text">
-              <h4>EMBEDDED SYSTEMS</h4>
-              <p>실시간 피드백을 처리하는 저지연 온보드 컴퓨팅.<br />조립 공정의 힘·위치 피드백을 ms 단위로 처리해야 한다. 하드웨어와 소프트웨어의 경계에서 일한다.</p>
-            </div>
-          </div>
-          <div class="challenge-item reveal">
-            <div class="challenge-num">04</div>
-            <div class="challenge-text">
-              <h4>SIMULATION</h4>
-              <p>Sim-to-Real 갭을 줄이는 제조 환경 시뮬레이션.<br />시뮬레이션으로 학습하고 실제 현장에 바로 배포. 물리 시뮬레이션 정밀도가 성패를 가른다.</p>
             </div>
           </div>
         </div>
@@ -1925,22 +1893,21 @@
     <div class="cta-glow"></div>
     <div class="container">
       <div class="cta-inner">
-        <div class="cta-eyebrow reveal">Ready to make the leap?</div>
+        <div class="cta-eyebrow reveal">YOUR NEXT STAGE</div>
         <h2 class="cta-title reveal">
-          당신의<br />
-          <span class="accent">NEXT</span><br />
-          STAGE
+          READY TO<br />
+          MAKE THE<br />
+          <span class="accent">LEAP?</span>
         </h2>
         <p class="cta-sub reveal">
           피지컬 AI와 양팔 로봇으로 제조 현장을 바꾸는 팀.<br />
-          우리는 지금 가장 어렵고, 가장 의미 있는 문제를 풀고 있습니다.<br />
-          당신의 Next Stage가 여기 있습니다.
+          우리는 지금 가장 어렵고 의미있는 문제를 풀고 있습니다.<br />
+          함께 Next Stage를 열어보실까요?
         </p>
         <div class="cta-actions reveal">
-          <a href="#open-positions" class="btn btn-primary" style="font-size:1.05rem; padding: 16px 40px;">포지션 지원하기 →</a>
-          <a href="mailto:recruit@plaif.io" class="btn btn-ghost" style="padding: 16px 40px;">채용 담당자에게 문의</a>
+          <a href="#open-positions" class="btn btn-primary" style="font-size:1.05rem; padding: 16px 48px;">포지션 지원하기 →</a>
         </div>
-        <p class="cta-note reveal">* 채용 기간: 2026.04.06 (월) — 2026.04.30 (목). 관심 포지션은 빠르게 지원해 주세요.</p>
+        <p class="cta-note reveal">* 채용 기간: 2026.04.06 (월) — 2026.04.30 (목) &nbsp;|&nbsp; 관심 포지션은 빠르게 지원해 주세요!</p>
       </div>
     </div>
   </section>
