@@ -639,13 +639,61 @@
       color: #fff;
     }
 
+    .stories-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .story-nav {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-3);
+      color: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s, opacity 0.2s;
+    }
+
+    .story-nav:hover:not(:disabled) {
+      border-color: var(--brand);
+      background: var(--brand-dim);
+      color: var(--brand);
+    }
+
+    .story-nav:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+
     .stories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      overflow-x: auto;
       gap: 24px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 4px;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .stories-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .story-card {
+      flex: 0 0 calc((100% - 48px) / 3);
+      scroll-snap-align: start;
       background: var(--bg-3);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -653,23 +701,13 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.3s, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
     }
 
     .story-card:hover {
       transform: translateY(-6px);
       border-color: var(--brand);
-    }
-
-    .story-card::before {
-      content: '\201C';
-      position: absolute;
-      top: -10px;
-      right: 24px;
-      font-family: Georgia, serif;
-      font-size: 8rem;
-      color: var(--brand-dim);
-      line-height: 1;
-      pointer-events: none;
     }
 
     .story-quote {
@@ -679,26 +717,21 @@
       margin-bottom: 28px;
       position: relative;
       z-index: 1;
+      flex: 1;
     }
 
     .story-person {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
+      text-align: center;
     }
 
     .story-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--brand-dim);
-      border: 2px solid var(--brand);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.1rem;
-      color: var(--brand);
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
     }
 
     .story-name {
@@ -1546,43 +1579,103 @@
         <div class="section-label">Team Stories</div>
         <h2>팀원들의 이야기</h2>
       </div>
+      <div class="stories-slider-wrap">
+      <button class="story-nav story-prev" aria-label="이전" disabled>&#8249;</button>
       <div class="stories-grid">
+        <!-- 1. 이기범 -->
         <div class="story-card reveal">
           <p class="story-quote">
-            "실제 공장 라인에서 내가 짠 제어 코드가 돌아가는 걸 처음 봤을 때, 그 전율은 어떤 사이드 프로젝트로도 경험한 적 없는 감각이었습니다."
+            단순한 인공지능 개발자에서 로봇 시스템 전체의 청사진을 그리는 사람으로 성장할 수 있었던 건, 묻지 않아도 기꺼이 서로를 돕는 동료들의 진정한 '주인의식' 덕분입니다.<br><br>한계를 마주하더라도 어떻게든 해내고 마는 훌륭한 동료들과 함께하며 밀도있게 배울 수 있습니다. 이 분야를 진심으로 사랑하며 '덕업일체'의 짜릿한 성장을 경험할 분들을 기다립니다.
           </p>
           <div class="story-person">
-            <div class="story-avatar">KJ</div>
+            <svg class="story-avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11" shape-rendering="crispEdges">
+              <rect x="2" y="0" width="8" height="1" fill="#f59e0b"/>
+              <rect x="5" y="1" width="2" height="1" fill="#f59e0b"/>
+              <rect x="0" y="2" width="12" height="9" fill="#f59e0b"/>
+              <rect x="1" y="3" width="10" height="7" fill="#091a2e"/>
+              <rect x="2" y="4" width="3" height="3" fill="#f59e0b"/>
+              <rect x="3" y="5" width="1" height="1" fill="#091a2e"/>
+              <rect x="7" y="4" width="3" height="3" fill="#f59e0b"/>
+              <rect x="8" y="5" width="1" height="1" fill="#091a2e"/>
+              <rect x="3" y="8" width="6" height="1" fill="#f59e0b"/>
+            </svg>
             <div>
-              <div class="story-name">김준혁</div>
-              <div class="story-role">Robotics Software Engineer</div>
+              <div class="story-name">이기범</div>
+              <div class="story-role">Motion팀</div>
             </div>
           </div>
         </div>
+        <!-- 2. 김지헌 -->
         <div class="story-card reveal">
           <p class="story-quote">
-            "VLA 모델을 연구실 밖으로 꺼내 실제 조립 태스크에 붙이는 작업을 하고 있습니다. 여기서는 논문이 아니라 현장이 정답입니다."
+            플라잎은 명확한 비전 아래 엔지니어의 기술적 선택을 굳게 신뢰합니다. 마치 '들판을 뛰노는 소'처럼 자유롭게 역량을 펼치며, 회사와 개인이 따뜻하게 동반 성장할 수 있는 곳이죠.<br><br>든든한 서포트가 준비되어 있으니 같은 목표를 향해 달릴 열정이 있다면 주저 없이 지원해 주시길 바랍니다.
           </p>
           <div class="story-person">
-            <div class="story-avatar">OS</div>
+            <svg class="story-avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11" shape-rendering="crispEdges">
+              <rect x="3" y="0" width="1" height="2" fill="#a78bfa"/>
+              <rect x="8" y="0" width="1" height="2" fill="#a78bfa"/>
+              <rect x="0" y="2" width="12" height="9" fill="#a78bfa"/>
+              <rect x="1" y="3" width="10" height="7" fill="#0f0a1e"/>
+              <rect x="2" y="4" width="2" height="2" fill="#a78bfa"/>
+              <rect x="8" y="4" width="2" height="2" fill="#a78bfa"/>
+              <rect x="3" y="7" width="1" height="1" fill="#a78bfa"/>
+              <rect x="4" y="8" width="4" height="1" fill="#a78bfa"/>
+              <rect x="8" y="7" width="1" height="1" fill="#a78bfa"/>
+            </svg>
             <div>
-              <div class="story-name">오서연</div>
-              <div class="story-role">AI Research Engineer</div>
+              <div class="story-name">김지헌</div>
+              <div class="story-role">Manipulation팀</div>
             </div>
           </div>
         </div>
+        <!-- 3. 김가은 -->
         <div class="story-card reveal">
           <p class="story-quote">
-            "로봇이 나사를 조이는 순간 주변에 있던 현장 분들이 박수를 쳤어요. 기술이 사람들의 일을 실제로 바꾸는 현장에 있다는 게 매일 동기부여가 됩니다."
+            플라잎은 개발자로서 요구사항 수집부터 완성까지 전체 프로세스를 이끌며 온전한 성취감을 느낄 수 있는 로봇 스타트업입니다. 실력 있는 동료들이 언제든 질문에 바로 답해주며 호기심을 채워주는 열린 문화를 자랑하죠.<br><br>주도적으로 일하며 인류 발전에 기여한다는 사명감을 가진 분이라면 플라잎과 완벽한 시너지를 내실 수 있을 거에요!
           </p>
           <div class="story-person">
-            <div class="story-avatar">LT</div>
+            <svg class="story-avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11" shape-rendering="crispEdges">
+              <rect x="0" y="4" width="1" height="3" fill="#00c896"/>
+              <rect x="11" y="4" width="1" height="3" fill="#00c896"/>
+              <rect x="1" y="1" width="10" height="9" fill="#00c896"/>
+              <rect x="2" y="2" width="8" height="7" fill="#091a2e"/>
+              <rect x="2" y="4" width="8" height="2" fill="#00c896"/>
+              <rect x="3" y="5" width="6" height="1" fill="#091a2e"/>
+              <rect x="3" y="7" width="1" height="1" fill="#00c896"/>
+              <rect x="5" y="7" width="2" height="1" fill="#00c896"/>
+              <rect x="8" y="7" width="1" height="1" fill="#00c896"/>
+            </svg>
             <div>
-              <div class="story-name">이태양</div>
-              <div class="story-role">Mechatronics Engineer</div>
+              <div class="story-name">김가은</div>
+              <div class="story-role">Software팀</div>
             </div>
           </div>
         </div>
+        <!-- 4. 이주성 -->
+        <div class="story-card reveal">
+          <p class="story-quote">
+            목표를 향해 지치지 않고 달려가는 '돌격부대' 같은 동료들과 함께, 내가 만든 피지컬 AI 기반 로봇으로 세상을 발전시킨다는 벅찬 소명 의식을 느낄 수 있습니다.<br><br>일에 대한 치열한 몰입과 능동적인 태도만 있다면, 플라잎은 그 어느 곳보다 빠르고 밀도 높은 성장을 경험할 수 있는 최적의 무대입니다.
+          </p>
+          <div class="story-person">
+            <svg class="story-avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 11" shape-rendering="crispEdges">
+              <rect x="5" y="0" width="2" height="1" fill="#00b7ec"/>
+              <rect x="4" y="1" width="4" height="1" fill="#00b7ec"/>
+              <rect x="0" y="2" width="12" height="9" fill="#00b7ec"/>
+              <rect x="1" y="3" width="10" height="7" fill="#091a2e"/>
+              <rect x="2" y="4" width="3" height="2" fill="#00b7ec"/>
+              <rect x="7" y="4" width="3" height="2" fill="#00b7ec"/>
+              <rect x="2" y="8" width="2" height="1" fill="#00b7ec"/>
+              <rect x="5" y="8" width="2" height="1" fill="#00b7ec"/>
+              <rect x="8" y="8" width="2" height="1" fill="#00b7ec"/>
+            </svg>
+            <div>
+              <div class="story-name">이주성</div>
+              <div class="story-role">Dev Group Leader</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="story-nav story-next" aria-label="다음">&#8250;</button>
       </div>
     </div>
   </section>
@@ -2099,6 +2192,51 @@
           revealChars(line2, 72, null);
         });
       }, 400);
+    })();
+
+    // ── Stories slider: drag + prev/next buttons ─────────────────
+    (() => {
+      const slider = document.querySelector('.stories-grid');
+      const prev   = document.querySelector('.story-prev');
+      const next   = document.querySelector('.story-next');
+      if (!slider) return;
+
+      const cardWidth = () => {
+        const card = slider.querySelector('.story-card');
+        return card ? card.offsetWidth + 24 : 320;
+      };
+
+      const updateButtons = () => {
+        if (!prev || !next) return;
+        prev.disabled = slider.scrollLeft <= 1;
+        next.disabled = slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 1;
+      };
+
+      prev?.addEventListener('click', () => {
+        slider.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+      });
+      next?.addEventListener('click', () => {
+        slider.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+      });
+
+      slider.addEventListener('scroll', updateButtons);
+      updateButtons();
+
+      // Drag-to-scroll
+      let isDown = false, startX, scrollLeft;
+      slider.addEventListener('mousedown', e => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+      slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
+      slider.addEventListener('mouseup',    () => { isDown = false; slider.style.cursor = 'grab'; });
+      slider.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 1.5;
+      });
     })();
   </script>
 </body>
