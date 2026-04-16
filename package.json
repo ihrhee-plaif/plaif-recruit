@@ -1,0 +1,17 @@
+{
+  "name": "plaif-recruit",
+  "version": "1.0.0",
+  "description": "PLAiF recruitment website",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static HTML'",
+    "lint": "echo 'No linting configured'"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.3"
+  }
+}
